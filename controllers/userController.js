@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const user_index = (req, res) => {
-  User.find().sort({ createdAt: -1 })
+  User.find()
     .then(result => {
         res.json({
             users:result
@@ -25,10 +25,6 @@ const user_details = (req, res) => {
     .catch(err => {
       console.log(err);
     });
-}
-
-const user_create_get = (req, res) => {
-  res.render('create', { title: 'Create a new user' });
 }
 
 const user_create_post = (req, res) => {
@@ -93,7 +89,6 @@ const user_authenticate = (req, res) => {
 module.exports = {
   user_index, 
   user_details, 
-  user_create_get, 
   user_create_post,
   user_authenticate
 }

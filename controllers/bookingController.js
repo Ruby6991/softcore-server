@@ -116,8 +116,7 @@ const booking_update_put = (req, res) => {
 
 module.exports = {
     booking_index, 
-    booking_details, 
-    // booking_create_get, 
+    booking_details,  
     booking_create_post,
     booking_cancel_put,
     booking_perday,
