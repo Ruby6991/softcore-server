@@ -5,7 +5,9 @@ const jwt = require('jsonwebtoken');
 const user_index = (req, res) => {
   User.find().sort({ createdAt: -1 })
     .then(result => {
-      res.render('index', { users: result, title: 'All users' });
+        res.json({
+            users:result
+        })
     })
     .catch(err => {
       console.log(err);
@@ -16,11 +18,12 @@ const user_details = (req, res) => {
   const id = req.params.id;
   User.findById(id)
     .then(result => {
-      res.render('details', { user: result, title: 'User Details' });
+        res.json({
+            user:result
+        })
     })
     .catch(err => {
       console.log(err);
-      res.render('404', { title: 'User not found' });
     });
 }
 
@@ -70,6 +73,7 @@ const user_authenticate = (req, res) => {
                         let token = jwt.sign({name: user.firstName}, 'verySecretValue', {expiresIn: '1h'});
                         res.json({
                             message:'Login Successful!',
+                            userType: user.userType,
                             token
                         })
                     }else{

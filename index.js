@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes');
+const bookingRoutes = require('./routes/bookingRoutes');
+const substationRoutes = require('./routes/substationRoutes');
+const employeeRoutes = require('./routes/employeeRoutes');
 const cors = require('cors');
 
 // express app
@@ -19,3 +22,12 @@ app.use(express.json());
 
 //user routes
 app.use('/users', userRoutes);
+
+//booking routes
+app.use('/bookings', bookingRoutes);
+
+//substation routes
+app.use('/substations', substationRoutes);
+
+//employess routes
+app.use('/employees', employeeRoutes);
